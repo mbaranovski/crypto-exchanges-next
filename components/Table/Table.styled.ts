@@ -9,7 +9,21 @@ export const Table = styled.table`
   border-spacing: 0;
   border: 1px solid #f4f4f6;
   border-radius: 0.5rem;
+
+  th,
+  td {
+    padding: 1rem 0.5rem;
+
+    &:last-of-type {
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 576px) {
+      padding: 1rem;
+    }
+  }
 `;
+
 export const THead = styled.thead`
   text-align: left;
   height: 3rem;
@@ -28,13 +42,11 @@ export const Tr = styled.tr`
 export const Th = styled.th`
   font-size: 0.8rem;
   font-weight: normal;
-  padding: 1rem;
 `;
 
 export const Td = styled.td`
   font-size: 0.9rem;
   background-color: white;
-  padding: 1rem;
   border-bottom: 1px solid #f4f4f6;
 
   transition: background-color 0.1s ease-out;

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const ExchangeSiteHref = styled.a`
+const SiteHref = styled.a`
   font-size: 0.8rem;
+  opacity: 0.6;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-export const ExchangeTableNameColumn = styled.div`
+const TableNameColumn = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -12,16 +17,31 @@ export const ExchangeTableNameColumn = styled.div`
   white-space: nowrap;
 `;
 
-export const ExchangeTableCountryColumn = styled.div`
+const TableCountryColumn = styled.div`
   font-size: 0.8rem;
 `;
 
-export const ExchangeName = styled.div`
+const Name = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 `;
 
-export const NameWrapper = styled.div`
+const NameWrapper = styled.div`
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.4rem;
 `;
+
+export const Wrapper = styled.section``;
+
+export const ExchangesStyled = {
+  Wrapper,
+  SiteHref,
+  TableNameColumn,
+  TableCountryColumn,
+  Name,
+  NameWrapper,
+};

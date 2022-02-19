@@ -13,7 +13,6 @@ export const Layout: FC = ({ children }) => {
         <Header />
       </LayoutStyled.Header>
       <LayoutStyled.Main>{children}</LayoutStyled.Main>
-      <LayoutStyled.Footer>this is footer</LayoutStyled.Footer>
     </LayoutStyled.Container>
   );
 };

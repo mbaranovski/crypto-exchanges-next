@@ -49,10 +49,10 @@ const mockedSingleExchange: Exchange = {
 
 describe("CoinGeckoService", () => {
   const fetcherMock = td.func<typeof fetch>();
-  const apiUrl = "http://google.com";
+  const apiUrl = "https://api.coingecko.com/api/v3";
 
   test("exchanges method returns list of exchanges from the coinbase api", async () => {
-    const coinGeckoService = new CoinGeckoService(fetcherMock, apiUrl);
+    const coinGeckoService = new CoinGeckoService(fetcherMock);
     const mockSearchParams = {
       per_page: "10",
       page: "1",
@@ -77,7 +77,7 @@ describe("CoinGeckoService", () => {
   });
 
   test("exchange method returns single exchange object if found", async () => {
-    const coinGeckoService = new CoinGeckoService(fetcherMock, apiUrl);
+    const coinGeckoService = new CoinGeckoService(fetcherMock);
 
     td.when(fetcherMock(`${apiUrl}/exchanges/binance`)).thenResolve({
       json: async () => mockedSingleExchange,

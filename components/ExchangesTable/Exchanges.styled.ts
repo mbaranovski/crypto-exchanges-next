@@ -31,7 +31,6 @@ const NameWrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 0.4rem;
 `;
 

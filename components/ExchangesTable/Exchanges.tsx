@@ -4,6 +4,7 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const fromUrlStringToUrlObject = (url: string) => ({
   siteName: new URL(url).host.toString().replace("www.", ""),
@@ -35,6 +36,8 @@ export const NameWrapper = styled.div`
 export const Exchanges: FC<{ exchanges: ExchangeListItem[] }> = ({
   exchanges,
 }) => {
+  const router = useRouter();
+
   return (
     <Table>
       <THead>
@@ -48,7 +51,10 @@ export const Exchanges: FC<{ exchanges: ExchangeListItem[] }> = ({
         {exchanges.map((exchange) => {
           const { siteName, href } = fromUrlStringToUrlObject(exchange.url);
           return (
-            <Tr key={`exchange-${exchange.id}`}>
+            <Tr
+              key={`exchange-${exchange.id}`}
+              onClick={() => router.push(`/exchange/${exchange.id}`)}
+            >
               <Td>
                 <ExchangeTableNameColumn>
                   <Image

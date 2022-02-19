@@ -7,11 +7,12 @@ const Container = styled.section`
 
   @media only screen and (min-width: 1025px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
       "info info . ."
-      "description description social social"
-      ". . . .";
+      "description description social social";
+
+    grid-auto-rows: minmax(100px, auto);
 
     .info {
       grid-area: info;
@@ -29,20 +30,6 @@ const Logo = styled(Image)`
   border-radius: 5px;
 `;
 
-const TrustRankCircle = styled.div`
-  font-size: 1rem;
-  color: #f9e988;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-
-  padding: 1rem;
-  border-radius: 5px;
-  background-color: #8cc63f;
-`;
-
 const Details = styled.div`
   display: flex;
   width: 100%;
@@ -57,7 +44,6 @@ const SocialIconsContainer = styled.div`
 
 export const ExchangeStyled = {
   Container,
-  TrustRankCircle,
   Logo,
   Details,
   SocialIconsContainer,

@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import { Exchanges } from "../components/ExchangesTable/Exchanges";
+import { ExchangesTable } from "../components/ExchangesTable/ExchangesTable";
 import { ExchangeListItem } from "../services/CoinGeckoService/CoinGeckoService.types";
 import { CoinGeckoService } from "../services/CoinGeckoService/CoinGeckoService";
 
@@ -15,7 +15,7 @@ const Home: NextPage<PageProps> = ({ exchanges }) => {
         <title>Coin Gecko exchanges directory</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Exchanges exchanges={exchanges} />
+      <ExchangesTable exchanges={exchanges} />
     </div>
   );
 };

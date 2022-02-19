@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const Main = styled.main``;
+const Main = styled.main`
+  margin-bottom: 2rem;
+`;
 
 const Container = styled.div`
   padding: 0 0.5rem;
@@ -13,13 +15,10 @@ const Container = styled.div`
   }
 `;
 
-const Footer = styled.footer``;
-
 const Header = styled.header``;
 
 export const LayoutStyled = {
   Main,
   Container,
-  Footer,
   Header,
 };

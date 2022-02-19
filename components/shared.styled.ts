@@ -45,3 +45,26 @@ export const AButton = styled.a`
     box-shadow: 0 0 5px 0 #9fa3bb61;
   }
 `;
+
+export const TrustRankCircle = styled.div`
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  width: 20px;
+  height: 20px;
+  padding: 0.8rem;
+
+  color: #f9e988;
+  border-radius: 5px;
+  background-color: #8cc63f;
+
+  @media only screen and (min-width: 1025px) {
+    width: 30px;
+    height: 30px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+`;

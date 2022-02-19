@@ -1,12 +1,18 @@
 import { Exchange } from "../../services/CoinGeckoService/CoinGeckoService.types";
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { Telegram } from "@styled-icons/boxicons-logos/Telegram";
 import { Slack } from "@styled-icons/boxicons-logos/Slack";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { FacebookCircle } from "@styled-icons/boxicons-logos/FacebookCircle";
 import { Reddit } from "@styled-icons/boxicons-logos/Reddit";
 import { ExchangeStyled } from "./ExchangeStyled";
-import { AButton, Box, Heading, Small } from "../shared.styled";
+import {
+  AButton,
+  Box,
+  Heading,
+  Small,
+  TrustRankCircle,
+} from "../shared.styled";
 import Link from "next/link";
 
 type SocialMediaUrlObject = {
@@ -70,7 +76,7 @@ export const ExchangeDetails: FC<{ exchange: Exchange }> = ({ exchange }) => {
 
   return (
     <>
-      <Link href="/">
+      <Link href="/" passHref>
         <AButton>Go back</AButton>
       </Link>
       <ExchangeStyled.Container>
@@ -89,9 +95,9 @@ export const ExchangeDetails: FC<{ exchange: Exchange }> = ({ exchange }) => {
               <Small>Since: {exchange.year_established}</Small>
               <Small>From: {exchange.country}</Small>
             </div>
-            <ExchangeStyled.TrustRankCircle>
-              {exchange.trust_score_rank}
-            </ExchangeStyled.TrustRankCircle>
+            <div>
+              <TrustRankCircle>{exchange.trust_score_rank}</TrustRankCircle>
+            </div>
           </ExchangeStyled.Details>
         </Box>
 

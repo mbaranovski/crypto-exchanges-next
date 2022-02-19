@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { Exchange } from "../../services/CoinGeckoService/CoinGeckoService.types";
 import { CoinGeckoService } from "../../services/CoinGeckoService/CoinGeckoService";
+import { ExchangeDetails } from "../../components/ExchangeDetails/ExchangeDetails";
 
 interface PageProps {
   exchange: Exchange | null;
@@ -12,13 +13,13 @@ interface RouteParams extends ParsedUrlQuery {
   exchangeId: string;
 }
 
-const ExchangeDetails: NextPage<PageProps> = ({ exchange }) => {
+const ExchangeDetailsPage: NextPage<PageProps> = ({ exchange }) => {
   const router = useRouter();
   if (router.isFallback) return <div>loading...</div>;
 
   if (!exchange) return <div>exchange not found</div>;
 
-  return <div>{exchange.name}</div>;
+  return <ExchangeDetails exchange={exchange} />;
 };
 
 export const getStaticProps: GetStaticProps<PageProps, RouteParams> = async ({
@@ -36,8 +37,6 @@ export const getStaticProps: GetStaticProps<PageProps, RouteParams> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths<RouteParams> = async (context) => {
-  console.log("MICHAL: static paths context", context);
-
   const coinGeckoService = new CoinGeckoService(fetch);
 
   const exchanges = await coinGeckoService.exchanges({
@@ -51,4 +50,4 @@ export const getStaticPaths: GetStaticPaths<RouteParams> = async (context) => {
   };
 };
 
-export default ExchangeDetails;
+export default ExchangeDetailsPage;

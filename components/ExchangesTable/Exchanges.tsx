@@ -1,37 +1,21 @@
-import { ExchangeSiteHref, Table, Td, Th, THead, Tr } from "./Exchanges.styled";
-import { ExchangeListItem } from "../../services/CoinGeckoService/CoinGeckoService.types";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styled from "styled-components";
-import { useRouter } from "next/router";
+import { ExchangeListItem } from "../../services/CoinGeckoService/CoinGeckoService.types";
+import { Table, Td, Th, THead, Tr } from "../Table/Table.styled";
+import {
+  ExchangeName,
+  ExchangeSiteHref,
+  ExchangeTableCountryColumn,
+  ExchangeTableNameColumn,
+  NameWrapper,
+} from "./Exchanges.styled";
 
 const fromUrlStringToUrlObject = (url: string) => ({
   siteName: new URL(url).host.toString().replace("www.", ""),
   href: url,
 });
-
-export const ExchangeTableNameColumn = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  overflow: hidden;
-  white-space: nowrap;
-`;
-
-export const ExchangeTableCountryColumn = styled.div`
-  font-size: 0.8rem;
-`;
-
-export const ExchangeName = styled.div`
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const NameWrapper = styled.div`
-  overflow: hidden;
-`;
 
 export const Exchanges: FC<{ exchanges: ExchangeListItem[] }> = ({
   exchanges,

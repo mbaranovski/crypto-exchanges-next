@@ -1,5 +1,6 @@
-import { AppName, HeaderStyled } from "./Header.styled";
+import { HeaderStyled } from "./Header.styled";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -11,7 +12,9 @@ export const Header = () => {
           height={30}
           width={30}
         />
-        <AppName>Coin Gecko Directory</AppName>
+        <Link href="/">
+          <a>Coin Gecko Directory</a>
+        </Link>
       </HeaderStyled>
     </>
   );

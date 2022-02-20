@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExchangeListItem } from "../../services/CoinGeckoService/CoinGeckoService.types";
 import { useRouter } from "next/router";
-import { ExchangeStyled } from "../ExchangeDetails/ExchangeStyled";
-import { TrustRankCircle } from "../shared.styled";
+import { ExchangeStyled } from "../ExchangeDetails/Exchange.styled";
+import { TrustRankCircle } from "../Shared.styled";
 
 const fromUrlStringToUrlObject = (url: string) => ({
   readableHrefName: new URL(url).host.toString().replace("www.", ""),

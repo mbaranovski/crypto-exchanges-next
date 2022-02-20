@@ -1,13 +1,13 @@
 import { Exchange } from "../../services/CoinGeckoService/CoinGeckoService.types";
 import React, { FC, useMemo } from "react";
-import { ExchangeStyled } from "./ExchangeStyled";
+import { ExchangeStyled } from "./Exchange.styled";
 import {
   AButton,
   Box,
   Heading,
   Small,
   TrustRankCircle,
-} from "../shared.styled";
+} from "../Shared.styled";
 import Link from "next/link";
 import { generateSocialMediaUrls } from "./generateSocialMediaUrls";
 

@@ -15,10 +15,7 @@ const Container = styled.div`
   }
 `;
 
-const Header = styled.header``;
-
 export const LayoutStyled = {
   Main,
   Container,
-  Header,
 };

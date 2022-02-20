@@ -4,11 +4,11 @@ import { setDataTestId } from "../../utils/setDataTestId";
 export const Table = styled.table`
   width: 100%;
 
-  background-color: #f9f9fb;
+  background-color: ${({ theme }): string => theme.colors.ghostWhite};
 
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #e6e6ed;
+  border: 1px solid ${({ theme }) => theme.colors.brightGray};
   border-radius: 0.5rem;
 
   th,
@@ -36,7 +36,7 @@ export const Tr = styled.tr`
   }
 
   &:first-of-type td {
-    border-top: 1px solid #e6e6ed;
+    border-top: 1px solid ${({ theme }) => theme.colors.brightGray};
   }
 
   &:last-of-type {
@@ -58,12 +58,12 @@ export const Th = styled.th`
 export const Td = styled.td`
   font-size: 0.9rem;
   background-color: white;
-  border-bottom: 1px solid #e6e6ed;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.brightGray};
 
   transition: background-color 0.1s ease-out;
 
   ${Tr}:hover & {
-    background-color: #f9f9fb;
+    background-color: ${({ theme }): string => theme.colors.ghostWhite};
     cursor: pointer;
   }
 `;

@@ -21,7 +21,8 @@ export const Box = styled.section<{
   padding: ${({ padding }): string => padding || "1rem"};
   flex: ${({ flex }): string => flex || "1"};
 
-  border: ${({ border }): string => (border ? border : "1px solid #e6e6ed")};
+  border: ${({ border, theme }): string =>
+    border ? border : `1px solid ${theme.colors.brightGray}`};
   border-radius: 0.5rem;
 
   display: flex;
@@ -32,7 +33,7 @@ export const Box = styled.section<{
 
 export const AButton = styled.a`
   display: inline-block;
-  border: 1px solid #e6e6ed;
+  border: 1px solid ${({ theme }) => theme.colors.brightGray};
   border-radius: 0.5rem;
   font-size: 0.8rem;
 
@@ -43,8 +44,8 @@ export const AButton = styled.a`
 
   &:hover {
     cursor: pointer;
-    border: 1px solid #9fa3bb;
-    box-shadow: 0 0 5px 0 #9fa3bb61;
+    border: 1px solid ${({ theme }) => theme.colors.brightGray};
+    box-shadow: 0 0 5px 0 ${({ theme }) => theme.colors.brightGray};
   }
 `;
 
@@ -59,9 +60,9 @@ export const TrustRankCircle = styled.div`
   height: 20px;
   padding: 0.8rem;
 
-  color: #f9e988;
+  color: ${({ theme }): string => theme.colors.coinGeckoYellow};
   border-radius: 5px;
-  background-color: #8cc63f;
+  background-color: ${({ theme }): string => theme.colors.coinGeckoGreen};
 
   @media only screen and (min-width: 1025px) {
     width: 30px;

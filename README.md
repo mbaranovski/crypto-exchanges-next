@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#https://crypto-exchanges-next.vercel.app/
 
-## Getting Started
+## Description
 
-First, run the development server:
+Next.js projected featuring Server-side generation of static pages with incremental static regeneration. Data is provided by the publicly available [CoinGecko API](https://www.coingecko.com/en/api/documentation).
+
+## Requirements
+
+- NodeJS >= 14.x
+
+## Development
+
+First time use:
+
+```shell
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Run unit tests:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```shell
+npm run test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Run E2E Cypress tests:
 
-## Learn More
+```shell
+npm run e2e
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Repository has several quality gates setup in order to provide formatting consistency, best practices and code quality on the decent level.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Code pushed to **non** master branch:
+This triggers:
 
-## Deploy on Vercel
+- `build_and_test` - GH job which will run unit tests, linting, code formatting checks
+- `preview deployment` - Vercel preview deployment. Will post preview URL in the PR's message
+- `e2e` - **only** if `preview deployment` successfully deploys and runs the Cypress E2E tests against environment deployed by the previous job
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Code pushed to **master** branch:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `build_and_test` - GH job which will run unit tests, linting, code formatting checks
+- `production deployment` - Vercel production deployment
+- `e2e` - **only** if `preview deployment` successfully deploys and runs the Cypress E2E tests against environment deployed by the previous job

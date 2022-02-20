@@ -23,10 +23,14 @@ export const ExchangesTableRow: FC<{
     [exchange.url]
   );
   return (
-    <Tr onClick={() => router.push(`/exchange/${exchange.id}`)}>
+    <Tr
+      onClick={() => router.push(`/exchange/${exchange.id}`)}
+      data-testid="exchange-item-row"
+    >
       <Td>
         <ExchangesStyled.TableNameColumn>
           <Image
+            data-testid="exchange-logo"
             unoptimized
             width={35}
             height={35}
@@ -34,9 +38,14 @@ export const ExchangesTableRow: FC<{
             alt={`${exchange.name} logo image`}
           />
           <ExchangesStyled.NameWrapper>
-            <ExchangesStyled.Name>{exchange.name}</ExchangesStyled.Name>
+            <ExchangesStyled.Name data-testid="exchange-name">
+              {exchange.name}
+            </ExchangesStyled.Name>
             <Link href={externalHref} passHref>
-              <ExchangesStyled.SiteHref target="_blank">
+              <ExchangesStyled.SiteHref
+                target="_blank"
+                data-testid="exchange-site-url"
+              >
                 {readableHrefName}
               </ExchangesStyled.SiteHref>
             </Link>
@@ -44,12 +53,14 @@ export const ExchangesTableRow: FC<{
         </ExchangesStyled.TableNameColumn>
       </Td>
       <Td>
-        <ExchangesStyled.TableCountryColumn>
+        <ExchangesStyled.TableCountryColumn data-testid="exchange-country">
           {exchange.country}
         </ExchangesStyled.TableCountryColumn>
       </Td>
       <Td>
-        <TrustRankCircle>{exchange.trust_score_rank}</TrustRankCircle>
+        <TrustRankCircle data-testid="exchange-trust-rank">
+          {exchange.trust_score_rank}
+        </TrustRankCircle>
       </Td>
     </Tr>
   );

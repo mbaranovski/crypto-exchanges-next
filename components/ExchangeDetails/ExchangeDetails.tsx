@@ -80,7 +80,11 @@ export const ExchangeDetails: FC<{ exchange: Exchange }> = ({ exchange }) => {
         <AButton>Go back</AButton>
       </Link>
       <ExchangeStyled.Container>
-        <Box className="info" alignItems="center">
+        <Box
+          className="info"
+          alignItems="center"
+          data-testid="exchange-info-box"
+        >
           <ExchangeStyled.Logo
             unoptimized
             width={70}
@@ -101,12 +105,16 @@ export const ExchangeDetails: FC<{ exchange: Exchange }> = ({ exchange }) => {
           </ExchangeStyled.Details>
         </Box>
 
-        <Box column className="description">
+        <Box
+          column
+          className="description"
+          data-testid="exchange-description-box"
+        >
           <Heading>Description</Heading>
           <p>{exchange.description || "No description provided"}</p>
         </Box>
 
-        <Box column className="social">
+        <Box column className="social" data-testid="exchange-social-box">
           <Heading>Social Media</Heading>
           <ExchangeStyled.SocialIconsContainer>
             {socialMediaUrls.length

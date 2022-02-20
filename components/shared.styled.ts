@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const setDataTestId =
+  (testId: string) => (props: { "data-testid"?: string }) => ({
+    "data-testid": props["data-testid"] || testId,
+  });
+
 export const Heading = styled.h1`
   font-size: 1.2rem;
   margin: 0;

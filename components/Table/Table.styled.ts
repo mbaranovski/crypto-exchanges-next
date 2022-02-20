@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { setDataTestId } from "../shared.styled";
+import { setDataTestId } from "../../utils/setDataTestId";
 
 export const Table = styled.table`
   width: 100%;
@@ -8,7 +8,7 @@ export const Table = styled.table`
 
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #f4f4f6;
+  border: 1px solid #e6e6ed;
   border-radius: 0.5rem;
 
   th,
@@ -36,7 +36,17 @@ export const Tr = styled.tr`
   }
 
   &:first-of-type td {
-    border-top: 1px solid #f4f4f6;
+    border-top: 1px solid #e6e6ed;
+  }
+
+  &:last-of-type {
+    td:last-of-type {
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    td:first-of-type {
+      border-bottom-left-radius: 0.5rem;
+    }
   }
 `;
 
@@ -48,7 +58,7 @@ export const Th = styled.th`
 export const Td = styled.td`
   font-size: 0.9rem;
   background-color: white;
-  border-bottom: 1px solid #f4f4f6;
+  border-bottom: 1px solid #e6e6ed;
 
   transition: background-color 0.1s ease-out;
 

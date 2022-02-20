@@ -14,7 +14,7 @@ export class CoinGeckoService extends BaseService {
   exchanges(searchParams?: { per_page: string; page: string }) {
     return this.findAll<ExchangeListItem>("/exchanges", searchParams).catch(
       (e) => {
-        console.log(e);
+        console.error(e);
         return [];
       }
     );

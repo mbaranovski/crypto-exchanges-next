@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { ExchangesTable } from "../components/Exchanges/ExchangesTable";
 import { ExchangeListItem } from "../services/CoinGeckoService/CoinGeckoService.types";
 import { CoinGeckoService } from "../services/CoinGeckoService/CoinGeckoService";
-import { Box, Heading } from "../components/shared.styled";
+import { Box, Heading } from "../components/Shared.styled";
 import { ExchangesStyled } from "../components/Exchanges/Exchanges.styled";
 
 interface PageProps {

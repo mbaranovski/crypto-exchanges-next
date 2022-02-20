@@ -4,17 +4,27 @@ import * as td from "testdouble";
 import Index from "../pages";
 import { mockedExchanges } from "../mocks/exchangesList";
 import { NextRouter } from "next/dist/shared/lib/router/router";
+import { ThemeProvider } from "styled-components";
+import { layoutTheme } from "../theme";
 
 describe("Index page", () => {
   test("should render welcome box", async () => {
-    render(<Index exchanges={[]} />);
+    render(
+      <ThemeProvider theme={layoutTheme}>
+        <Index exchanges={[]} />
+      </ThemeProvider>
+    );
 
     await screen.findByText("Welcome!");
     await screen.findByTestId("exchanges-welcome-msg");
   });
 
   test("should render table with provided exchanges", async () => {
-    render(<Index exchanges={mockedExchanges} />);
+    render(
+      <ThemeProvider theme={layoutTheme}>
+        <Index exchanges={mockedExchanges} />
+      </ThemeProvider>
+    );
 
     await screen.findByTestId("exchange-logo");
     await screen.findByText("Binance");
@@ -28,9 +38,11 @@ describe("Index page", () => {
     const routerMock = td.object<NextRouter>();
 
     render(
-      <RouterContext.Provider value={routerMock}>
-        <Index exchanges={mockedExchanges} />
-      </RouterContext.Provider>
+      <ThemeProvider theme={layoutTheme}>
+        <RouterContext.Provider value={routerMock}>
+          <Index exchanges={mockedExchanges} />
+        </RouterContext.Provider>
+      </ThemeProvider>
     );
 
     (await screen.findByTestId("exchange-item-row")).click();

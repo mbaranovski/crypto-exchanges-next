@@ -4,6 +4,8 @@ import * as td from "testdouble";
 import { NextRouter } from "next/dist/shared/lib/router/router";
 import ExchangeDetailsPage from "../pages/exchange/[exchangeId]";
 import { mockedSingleExchange } from "../mocks/exchangeItem";
+import { layoutTheme } from "../theme";
+import { ThemeProvider } from "styled-components";
 
 describe("Exchange Details page", () => {
   test("should render fallback UI if loading page that was not Server Side generated before", async () => {
@@ -46,7 +48,9 @@ describe("Exchange Details page", () => {
 
     render(
       <RouterContext.Provider value={routerMock}>
-        <ExchangeDetailsPage exchange={mockedSingleExchange} />
+        <ThemeProvider theme={layoutTheme}>
+          <ExchangeDetailsPage exchange={mockedSingleExchange} />
+        </ThemeProvider>
       </RouterContext.Provider>
     );
 

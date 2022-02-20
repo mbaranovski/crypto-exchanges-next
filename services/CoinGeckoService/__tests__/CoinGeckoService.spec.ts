@@ -76,15 +76,55 @@ describe("CoinGeckoService", () => {
     expect(exchanges).toEqual(mockedExchanges);
   });
 
+  test("exchanges method returns empty list in case of error during fetching", async () => {
+    const coinGeckoService = new CoinGeckoService(fetcherMock);
+
+    td.when(fetcherMock(`${apiUrl}/exchanges`)).thenReject(
+      new Error("error while fetching")
+    );
+
+    const exchanges = await coinGeckoService.exchanges();
+
+    expect(exchanges).toEqual([]);
+  });
+
   test("exchange method returns single exchange object if found", async () => {
     const coinGeckoService = new CoinGeckoService(fetcherMock);
 
     td.when(fetcherMock(`${apiUrl}/exchanges/binance`)).thenResolve({
       json: async () => mockedSingleExchange,
+      status: 200,
     });
 
     const exchanges = await coinGeckoService.exchange("binance");
 
     expect(exchanges).toEqual(mockedSingleExchange);
+  });
+
+  test("exchange method returns null if entity not found", async () => {
+    const coinGeckoService = new CoinGeckoService(fetcherMock);
+
+    td.when(fetcherMock(`${apiUrl}/exchanges/not-existing`)).thenResolve({
+      json: async () => ({
+        error: "resource not found",
+      }),
+      status: 404,
+    });
+
+    const exchanges = await coinGeckoService.exchange("not-existing");
+
+    expect(exchanges).toEqual(null);
+  });
+
+  test("exchange method returns null if in case of error during fetching", async () => {
+    const coinGeckoService = new CoinGeckoService(fetcherMock);
+
+    td.when(fetcherMock(`${apiUrl}/exchanges/with-error`)).thenReject(
+      new Error("error while fetching")
+    );
+
+    const exchanges = await coinGeckoService.exchange("with-error");
+
+    expect(exchanges).toEqual(null);
   });
 });

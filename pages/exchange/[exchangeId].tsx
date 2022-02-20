@@ -15,7 +15,9 @@ interface RouteParams extends ParsedUrlQuery {
 
 const ExchangeDetailsPage: NextPage<PageProps> = ({ exchange }) => {
   const router = useRouter();
-  if (router.isFallback) return <div>loading...</div>;
+  if (router.isFallback) {
+    return <div>loading...</div>;
+  }
 
   if (!exchange) return <div>exchange not found</div>;
 

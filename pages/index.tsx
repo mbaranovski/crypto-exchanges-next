@@ -9,13 +9,13 @@ interface PageProps {
   exchanges: ExchangeListItem[];
 }
 
-const Home: NextPage<PageProps> = ({ exchanges }) => {
+const Index: NextPage<PageProps> = ({ exchanges }) => {
   return (
     <>
       <ExchangesStyled.PageLayout>
         <Box column flex="1" data-testid="exchanges-welcome-box">
           <Heading>Welcome!</Heading>
-          <p>
+          <p data-testid="exchanges-welcome-msg">
             Here is the list of <strong>Top 10</strong> Cryptocurrency
             exchanges. Click on any row to display the details!
           </p>
@@ -41,4 +41,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   };
 };
 
-export default Home;
+export default Index;

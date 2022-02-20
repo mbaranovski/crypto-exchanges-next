@@ -17,4 +17,8 @@ export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  
+  p {
+    margin: 0;
+  }
 `;

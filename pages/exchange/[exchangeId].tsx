@@ -46,7 +46,7 @@ export const getStaticPaths: GetStaticPaths<RouteParams> = async (context) => {
 
   return {
     paths: exchanges.map(({ id }) => ({ params: { exchangeId: id } })),
-    fallback: true, // false or 'blocking'
+    fallback: true,
   };
 };
 

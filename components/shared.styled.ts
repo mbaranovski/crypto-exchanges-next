@@ -25,7 +25,7 @@ export const Box = styled.section<{
   display: flex;
   align-items: ${({ alignItems }): string => alignItems || "start"};
   flex-direction: ${({ column }): string => (column ? "column" : "row")};
-  gap: ${({ gap }): string => gap || "0"};
+  gap: 1rem;
 `;
 
 export const AButton = styled.a`

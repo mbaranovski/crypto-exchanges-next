@@ -1,11 +1,11 @@
 name: Build & Test
 
-on: [push]
+on: [push, deployment_status]
 
 jobs:
   build_and_test:
-    runs-on: ubuntu-latest
-
+    if: github.event_name != 'deployment_status'
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -26,3 +26,22 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  e2e:
+    # run only if there's successful Vercel preview deployment
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+      - name: Run Cypress 🌲
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+
+      - name: Store failed test video artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos

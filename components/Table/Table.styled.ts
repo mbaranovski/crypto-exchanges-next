@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { setDataTestId } from "../shared.styled";
 
 export const Table = styled.table`
   width: 100%;
@@ -24,7 +25,7 @@ export const Table = styled.table`
   }
 `;
 
-export const THead = styled.thead`
+export const THead = styled.thead.attrs(setDataTestId("table-header"))`
   text-align: left;
   height: 3rem;
 `;

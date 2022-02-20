@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const setDataTestId =
-  (testId: string) => (props: { "data-testid"?: string }) => ({
-    "data-testid": props["data-testid"] || testId,
-  });
-
 export const Heading = styled.h1`
   font-size: 1.2rem;
   margin: 0;
@@ -17,14 +12,16 @@ export const Small = styled.div`
 
 export const Box = styled.section<{
   column?: boolean;
-  gap?: string;
   flex?: string;
   alignItems?: string;
+  border?: string;
+  padding?: string;
 }>`
-  padding: 1rem;
+  width: 100%;
+  padding: ${({ padding }): string => padding || "1rem"};
   flex: ${({ flex }): string => flex || "1"};
 
-  border: 1px solid #f4f4f6;
+  border: ${({ border }): string => (border ? border : "1px solid #e6e6ed")};
   border-radius: 0.5rem;
 
   display: flex;
@@ -35,7 +32,7 @@ export const Box = styled.section<{
 
 export const AButton = styled.a`
   display: inline-block;
-  border: 1px solid #f4f4f6;
+  border: 1px solid #e6e6ed;
   border-radius: 0.5rem;
   font-size: 0.8rem;
 

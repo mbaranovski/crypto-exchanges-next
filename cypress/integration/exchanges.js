@@ -4,6 +4,8 @@ describe("Exchanges directory smoke test", () => {
 
     cy.findByText("Coin Gecko Directory");
 
+    cy.findByTestId("exchanges-welcome-box").should("be.visible");
+
     cy.findByTestId("table-header").findByText("Name").should("be.visible");
     cy.findByTestId("table-header").findByText("Country").should("be.visible");
     cy.findByTestId("table-header")

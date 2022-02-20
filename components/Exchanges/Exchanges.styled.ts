@@ -3,9 +3,15 @@ import styled from "styled-components";
 const SiteHref = styled.a`
   font-size: 0.8rem;
   opacity: 0.6;
+  align-self: baseline;
 
+  &,
   &:hover {
     text-decoration: underline;
+  }
+
+  @media only screen and (min-width: 1025px) {
+    text-decoration: none;
   }
 `;
 
@@ -34,7 +40,18 @@ const NameWrapper = styled.div`
   gap: 0.4rem;
 `;
 
-export const Wrapper = styled.section``;
+const Wrapper = styled.section``;
+
+const PageLayout = styled.div`
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  flex-direction: column;
+
+  @media only screen and (min-width: 1025px) {
+    flex-direction: row;
+  }
+`;
 
 export const ExchangesStyled = {
   Wrapper,
@@ -43,4 +60,5 @@ export const ExchangesStyled = {
   TableCountryColumn,
   Name,
   NameWrapper,
+  PageLayout,
 };

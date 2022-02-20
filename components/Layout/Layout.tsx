@@ -7,9 +7,7 @@ export const Layout: FC = ({ children }) => {
   return (
     <LayoutStyled.Container>
       <GlobalStyles />
-      <LayoutStyled.Header>
-        <Header />
-      </LayoutStyled.Header>
+      <Header />
       <LayoutStyled.Main>{children}</LayoutStyled.Main>
     </LayoutStyled.Container>
   );

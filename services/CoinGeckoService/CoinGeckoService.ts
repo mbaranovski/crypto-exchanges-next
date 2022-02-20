@@ -1,33 +1,43 @@
-import { BaseService } from "../BaseService";
 import { Exchange, ExchangeListItem } from "./CoinGeckoService.types";
 
-type ErrorResponse = { error: string };
+export class CoinGeckoService {
+  apiUrl: string = "https://api.coingecko.com/api/v3";
+  constructor(private fetcher: typeof fetch) {}
 
-const hasReturnedError = (response: any): response is ErrorResponse => {
-  return !!response.error;
-};
+  async exchanges(searchParams?: {
+    per_page: string;
+    page: string;
+  }): Promise<ExchangeListItem[]> {
+    try {
+      const url = new URL(`${this.apiUrl}/exchanges`);
+      if (searchParams)
+        url.search = new URLSearchParams(searchParams).toString();
 
-export class CoinGeckoService extends BaseService {
-  constructor(fetcher: typeof fetch) {
-    super(fetcher, "https://api.coingecko.com/api/v3");
+      const response = await this.fetcher(url.toString());
+      return response.json();
+    } catch (e) {
+      return [];
+    }
   }
-  exchanges(searchParams?: { per_page: string; page: string }) {
-    return this.findAll<ExchangeListItem>("/exchanges", searchParams).catch(
-      (e) => {
-        console.error(e);
-        return [];
+
+  async exchange(id: string): Promise<Exchange | null> {
+    try {
+      const response = await this.fetcher(
+        new URL(`${this.apiUrl}/exchanges/${id}`).toString()
+      );
+
+      const status = response.status;
+      const data = await response.json();
+
+      if (status !== 200) {
+        console.error(data);
+        return null;
       }
-    );
-  }
 
-  async exchange(id: string) {
-    const data = await this.findById<Exchange | null>(id, "/exchanges");
-
-    if (hasReturnedError(data)) {
-      console.error(data.error);
+      return data;
+    } catch (e) {
+      console.error(e);
       return null;
     }
-
-    return data;
   }
 }

@@ -35,6 +35,7 @@ export const getStaticProps: GetStaticProps<PageProps, RouteParams> = async ({
         ? await coinGeckoService.exchange(params.exchangeId)
         : null,
     },
+    revalidate: 5,
   };
 };
 

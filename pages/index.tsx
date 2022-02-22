@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
         per_page: "10",
       }),
     },
+    revalidate: 5,
   };
 };
 
